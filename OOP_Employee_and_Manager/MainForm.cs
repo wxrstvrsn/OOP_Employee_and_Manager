@@ -2,9 +2,9 @@ using OOP_Employee_and_Manager;
 
 namespace OOP_Employee_and_Manager
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -69,19 +69,37 @@ namespace OOP_Employee_and_Manager
 
         private void buttonUpdate_Click(object? sender, EventArgs e)
         {
-            if(listBoxAllEmployees.SelectedIndex == -1) {
-                MessageBox.Show("Выберите работника из списка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            var selected = allEmployees[listBoxAllEmployees.SelectedIndex];
-
-            FormEditEmployee editor = new FormEditEmployee(selected);
-
-            if (editor.ShowDialog() == DialogResult.OK)
+            if (listBoxAllEmployees.SelectedIndex >= 0)
             {
-                RefreshAllEmployeesList();
+                /*MessageBox.Show("Выберите работника из списка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;*/
+
+                var selected = allEmployees[listBoxAllEmployees.SelectedIndex];
+
+                FormEditEmployee editor = new FormEditEmployee(selected);
+
+                if (editor.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshAllEmployeesList();
+                }
             }
+            else
+            {
+                var form = new FormEditEmployee();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    allEmployees.Add(form.CreatedEmployee);
+                    RefreshAllEmployeesList();
+                }
+            }
+        }
+
+        private void buttonDelete_Click(object? sender, EventArgs e)
+        {
+            if (listBoxAllEmployees.SelectedIndex == -1) return;
+
+            allEmployees.RemoveAt(listBoxAllEmployees.SelectedIndex);
+            RefreshAllEmployeesList();
         }
     }
 }

@@ -37,7 +37,7 @@ public class Manager : Employee
 
     public override string ToString()
     {
-        return $"[{Id}] {Name}, Зарплата с бонусом составит: {GetSalary()}, Стаж: {GetExperienceInDays()} дн.";
+        return $"Manager: [{Id}] {Name}, Зарплата с бонусом составит: {GetSalary()}, Стаж: {GetExperienceInDays()} дн.";
     }
 }
 

@@ -33,6 +33,6 @@ public class HourlyManager : Employee
     public override string ToString()
     {
         return
-            $"Почасовая оплата [{Id}] {Name}, Часов: {HoursWorked}, Ставка: {HourlyRate:C}, Зарплата: {GetSalary():C}";
+            $"Hourly Manager: [{Id}] {Name}, Часов: {HoursWorked}, Ставка: {HourlyRate:C}, Зарплата: {GetSalary():C}";
     }
 }

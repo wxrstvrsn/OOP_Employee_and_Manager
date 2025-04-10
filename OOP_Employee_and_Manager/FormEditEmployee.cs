@@ -12,66 +12,85 @@ namespace OOP_Employee_and_Manager
 {
     public partial class FormEditEmployee : Form
     {
-        private Employee _employee;
+        private Employee editingTarget;
+        public Employee CreatedEmployee { get; private set; }
+        private bool isEditMode;
 
-        public FormEditEmployee(Employee employee)
+        public FormEditEmployee(Employee toEdit)
         {
             InitializeComponent();
-            _employee = employee;
-            InitForm();
+            isEditMode = true;
+            editingTarget = toEdit;
+            InitEditMode();
         }
 
-        private void InitForm()
+        private void InitCreateMode()
         {
-            textBoxName.Text = _employee.Name;
-            textBoxSalary.Text = _employee.Salary.ToString();
-            dateTimePickerHire.Value = _employee.EmployDate;
+            comboBoxWorkerType.Visible = true;
+            comboBoxWorkerType.SelectedIndexChanged += ComboBoxType_SelectedIndexChanged;
+            comboBoxWorkerType.SelectedIndex = 0;
 
-            if (_employee is Manager manager)
-            {
-                textBoxBonus.Enabled = true;
-                textBoxBonus.Text = manager.Bonus.ToString();
-            }
-            else
-            {
-                textBoxBonus.Enabled = true;
-                textBoxBonus.Text = "";
-            }
+            EnableFieldsFor("Employee");
+        }
 
-            if (_employee is HourlyManager hourlyManager)
-            {
-                textBoxBonus.Enabled = true;
-                textBoxRate.Enabled = true;
-                textBoxHours.Text = hourlyManager.HoursWorked.ToString();
-                textBoxRate.Text = hourlyManager.HourlyRate.ToString();
-            }
-            else
-            {
-                textBoxHours.Enabled = false;
-                textBoxHours.Text = "";
+        private void ComboBoxType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedType = comboBoxWorkerType.SelectedItem.ToString();
+            EnableFieldsFor(selectedType);
+        }
 
-                textBoxRate.Enabled = false;
-                textBoxRate.Text = "";
-            }
+        public FormEditEmployee()
+        {
+            InitializeComponent();
+            isEditMode = false;
+            InitCreateMode();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             try
             {
-                _employee.Name = textBoxName.Text;
-                _employee.Salary = float.Parse(textBoxSalary.Text);
-                _employee.EmployDate = dateTimePickerHire.Value;
+                string name = textBoxName.Text;
+                DateTime hireDate = dateTimePickerHire.Value;
+                float salary = float.Parse(textBoxSalary.Text);
 
-                if (_employee is Manager manager)
+                if (isEditMode)
                 {
-                    manager.Bonus = float.Parse(textBoxBonus.Text);
+                    editingTarget.Name = name;
+                    editingTarget.Salary = salary;
+                    editingTarget.EmployDate = hireDate;
+
+                    if (editingTarget is Manager manager)
+                    {
+                        manager.Bonus = float.Parse(textBoxBonus.Text);
+                    }
+
+                    if (editingTarget is HourlyManager hourly)
+                    {
+                        hourly.HoursWorked = int.Parse(textBoxHours.Text);
+                        hourly.HourlyRate = float.Parse(textBoxRate.Text);
+                    }
                 }
-
-                if (_employee is HourlyManager hourly)
+                else
                 {
-                    hourly.HoursWorked = int.Parse(textBoxHours.Text);
-                    hourly.HourlyRate = float.Parse(textBoxRate.Text);
+                    string type = comboBoxWorkerType.SelectedItem.ToString();
+                    switch (type)
+                    {
+                        case "Employee":
+                            CreatedEmployee = new Employee(name, salary, hireDate);
+                            break;
+                        case "Manager":
+                            float bonus = float.Parse(textBoxBonus.Text);
+                            CreatedEmployee = new Manager(name, salary, hireDate, bonus);
+                            break;
+                        case "HourlyManager":
+                            int hours = int.Parse(textBoxHours.Text);
+                            float rate = float.Parse(textBoxRate.Text);
+                            var hm = new HourlyManager(name, hireDate, rate);
+                            hm.AddHours(hours);
+                            CreatedEmployee = hm;
+                            break;
+                    }
                 }
 
                 this.DialogResult = DialogResult.OK;
@@ -80,6 +99,51 @@ namespace OOP_Employee_and_Manager
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка: " + ex.Message);
+            }
+        }
+
+        private void EnableFieldsFor(string type)
+        {
+            textBoxBonus.Enabled = false;
+            textBoxHours.Enabled = false;
+            textBoxRate.Enabled = false;
+
+            switch (type)
+            {
+                case "Manager":
+                    textBoxBonus.Enabled = true;
+                    break;
+                case "HourlyManager":
+                    textBoxHours.Enabled = true;
+                    textBoxRate.Enabled = true;
+                    break;
+            }
+        }
+
+        private void InitEditMode()
+        {
+            comboBoxWorkerType.Visible = false; // Скрываем выбор типа — мы уже знаем тип
+
+            textBoxName.Text = editingTarget.Name;
+            textBoxSalary.Text = editingTarget.Salary.ToString();
+            dateTimePickerHire.Value = editingTarget.EmployDate;
+
+            // Отключаем все специфичные поля
+            EnableFieldsFor("Employee");
+
+            // Если это менеджер
+            if (editingTarget is Manager manager)
+            {
+                EnableFieldsFor("Manager");
+                textBoxBonus.Text = manager.Bonus.ToString();
+            }
+
+            // Если это почасовик
+            if (editingTarget is HourlyManager hourly)
+            {
+                EnableFieldsFor("HourlyManager");
+                textBoxRate.Text = hourly.HourlyRate.ToString();
+                textBoxHours.Text = hourly.HoursWorked.ToString();
             }
         }
     }

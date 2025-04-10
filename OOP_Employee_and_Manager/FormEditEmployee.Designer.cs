@@ -35,12 +35,14 @@
             textBoxHours = new TextBox();
             textBoxRate = new TextBox();
             buttonSave = new Button();
+            comboBoxWorkerType = new ComboBox();
             SuspendLayout();
             // 
             // textBoxName
             // 
             textBoxName.Location = new Point(632, 187);
             textBoxName.Name = "textBoxName";
+            textBoxName.PlaceholderText = "Name";
             textBoxName.Size = new Size(100, 23);
             textBoxName.TabIndex = 0;
             // 
@@ -48,6 +50,7 @@
             // 
             textBoxSalary.Location = new Point(632, 216);
             textBoxSalary.Name = "textBoxSalary";
+            textBoxSalary.PlaceholderText = "Salary";
             textBoxSalary.Size = new Size(100, 23);
             textBoxSalary.TabIndex = 1;
             // 
@@ -62,6 +65,7 @@
             // 
             textBoxBonus.Location = new Point(632, 274);
             textBoxBonus.Name = "textBoxBonus";
+            textBoxBonus.PlaceholderText = "Bonus";
             textBoxBonus.Size = new Size(100, 23);
             textBoxBonus.TabIndex = 3;
             // 
@@ -69,6 +73,7 @@
             // 
             textBoxHours.Location = new Point(632, 303);
             textBoxHours.Name = "textBoxHours";
+            textBoxHours.PlaceholderText = "Hours";
             textBoxHours.Size = new Size(100, 23);
             textBoxHours.TabIndex = 4;
             // 
@@ -76,6 +81,7 @@
             // 
             textBoxRate.Location = new Point(632, 332);
             textBoxRate.Name = "textBoxRate";
+            textBoxRate.PlaceholderText = "Rate";
             textBoxRate.Size = new Size(100, 23);
             textBoxRate.TabIndex = 5;
             // 
@@ -87,13 +93,23 @@
             buttonSave.TabIndex = 6;
             buttonSave.Text = "Save\r\nChanges";
             buttonSave.UseVisualStyleBackColor = true;
-            buttonSave.Click += this.buttonSave_Click;
+            buttonSave.Click += buttonSave_Click;
+            // 
+            // comboBoxWorkerType
+            // 
+            comboBoxWorkerType.FormattingEnabled = true;
+            comboBoxWorkerType.Items.AddRange(new object[] { "Employee", "Manager", "HourlyManager" });
+            comboBoxWorkerType.Location = new Point(632, 110);
+            comboBoxWorkerType.Name = "comboBoxWorkerType";
+            comboBoxWorkerType.Size = new Size(121, 23);
+            comboBoxWorkerType.TabIndex = 7;
             // 
             // FormEditEmployee
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1322, 665);
+            Controls.Add(comboBoxWorkerType);
             Controls.Add(buttonSave);
             Controls.Add(textBoxRate);
             Controls.Add(textBoxHours);
@@ -116,5 +132,6 @@
         private TextBox textBoxHours;
         private TextBox textBoxRate;
         private Button buttonSave;
+        private ComboBox comboBoxWorkerType;
     }
 }

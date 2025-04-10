@@ -1,6 +1,6 @@
 ﻿namespace OOP_Employee_and_Manager
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,40 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            createEmp = new Button();
             listBoxAllEmployees = new ListBox();
             increaseSalary = new Button();
             textBoxPercent = new TextBox();
             label1 = new Label();
-            labelManagers = new Label();
-            createManager = new Button();
-            label2 = new Label();
-            createHourlyManager = new Button();
             buttonUpdate = new Button();
+            buttonDelete = new Button();
             SuspendLayout();
-            // 
-            // createEmp
-            // 
-            createEmp.Location = new Point(52, 294);
-            createEmp.Name = "createEmp";
-            createEmp.Size = new Size(72, 56);
-            createEmp.TabIndex = 0;
-            createEmp.Text = "Create\r\nEmployee\r\n";
-            createEmp.UseVisualStyleBackColor = true;
-            createEmp.Click += createEmp_Click;
             // 
             // listBoxAllEmployees
             // 
             listBoxAllEmployees.FormattingEnabled = true;
             listBoxAllEmployees.ItemHeight = 15;
-            listBoxAllEmployees.Location = new Point(52, 59);
+            listBoxAllEmployees.Location = new Point(413, 65);
             listBoxAllEmployees.Name = "listBoxAllEmployees";
             listBoxAllEmployees.Size = new Size(531, 229);
             listBoxAllEmployees.TabIndex = 1;
             // 
             // increaseSalary
             // 
-            increaseSalary.Location = new Point(566, 385);
+            increaseSalary.Location = new Point(872, 311);
             increaseSalary.Name = "increaseSalary";
             increaseSalary.Size = new Size(72, 56);
             increaseSalary.TabIndex = 2;
@@ -71,8 +57,9 @@
             // 
             // textBoxPercent
             // 
-            textBoxPercent.Location = new Point(644, 403);
+            textBoxPercent.Location = new Point(766, 329);
             textBoxPercent.Name = "textBoxPercent";
+            textBoxPercent.PlaceholderText = "percent";
             textBoxPercent.Size = new Size(100, 23);
             textBoxPercent.TabIndex = 3;
             // 
@@ -80,94 +67,55 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label1.Location = new Point(266, 31);
+            label1.Location = new Point(627, 37);
             label1.Name = "label1";
             label1.Size = new Size(102, 25);
             label1.TabIndex = 4;
             label1.Text = "Employees";
             // 
-            // labelManagers
-            // 
-            labelManagers.AutoSize = true;
-            labelManagers.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            labelManagers.Location = new Point(899, 31);
-            labelManagers.Name = "labelManagers";
-            labelManagers.Size = new Size(96, 25);
-            labelManagers.TabIndex = 6;
-            labelManagers.Text = "Managers";
-            // 
-            // createManager
-            // 
-            createManager.Location = new Point(1139, 294);
-            createManager.Name = "createManager";
-            createManager.Size = new Size(72, 56);
-            createManager.TabIndex = 7;
-            createManager.Text = "Create\r\nManager\r\n";
-            createManager.UseVisualStyleBackColor = true;
-            createManager.Click += createManager_Click;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label2.Location = new Point(216, 375);
-            label2.Name = "label2";
-            label2.Size = new Size(157, 25);
-            label2.TabIndex = 9;
-            label2.Text = "Hourly Managers";
-            // 
-            // createHourlyManager
-            // 
-            createHourlyManager.Location = new Point(566, 576);
-            createHourlyManager.Name = "createHourlyManager";
-            createHourlyManager.Size = new Size(72, 56);
-            createHourlyManager.TabIndex = 10;
-            createHourlyManager.Text = "Create Hourly\r\nManager\r\n";
-            createHourlyManager.UseVisualStyleBackColor = true;
-            createHourlyManager.Click += createHourly_Click;
-            // 
             // buttonUpdate
             // 
-            buttonUpdate.Location = new Point(775, 365);
+            buttonUpdate.Location = new Point(413, 300);
             buttonUpdate.Name = "buttonUpdate";
-            buttonUpdate.Size = new Size(296, 225);
+            buttonUpdate.Size = new Size(165, 151);
             buttonUpdate.TabIndex = 11;
-            buttonUpdate.Text = "Update\r\nInformation";
+            buttonUpdate.Text = "Update \r\nCreate\r\n";
             buttonUpdate.UseVisualStyleBackColor = true;
             buttonUpdate.Click += buttonUpdate_Click;
             // 
-            // Form1
+            // buttonDelete
+            // 
+            buttonDelete.Location = new Point(841, 373);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(103, 89);
+            buttonDelete.TabIndex = 12;
+            buttonDelete.Text = "Delete";
+            buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += buttonDelete_Click;
+            // 
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1271, 656);
+            Controls.Add(buttonDelete);
             Controls.Add(buttonUpdate);
-            Controls.Add(createHourlyManager);
-            Controls.Add(label2);
-            Controls.Add(createManager);
-            Controls.Add(labelManagers);
             Controls.Add(label1);
             Controls.Add(textBoxPercent);
             Controls.Add(increaseSalary);
             Controls.Add(listBoxAllEmployees);
-            Controls.Add(createEmp);
-            Name = "Form1";
+            Name = "MainForm";
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Button createEmp;
         private ListBox listBoxAllEmployees;
         private Button increaseSalary;
         private TextBox textBoxPercent;
         private Label label1;
-        private Label labelManagers;
-        private Button createManager;
-        private Label label2;
-        private Button createHourlyManager;
         private Button buttonUpdate;
+        private Button buttonDelete;
     }
 }
