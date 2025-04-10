@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using OOP_Employee_and_Manager;
 
 namespace OOP_Employee_and_Manager
@@ -30,6 +31,7 @@ namespace OOP_Employee_and_Manager
                     return;
                 }
                 allEmployees[listBoxAllEmployees.SelectedIndex].IncreaseSalary(percent);
+                Console.WriteLine("|-----------Increased 4 selected-----------|");
             }
             else
             {
@@ -37,6 +39,7 @@ namespace OOP_Employee_and_Manager
                 {
                     temp.IncreaseSalary(percent);
                 }
+                Console.WriteLine("|-----------Increased 4 all-----------|");
             }
 
             RefreshAllEmployeesList();
@@ -50,6 +53,7 @@ namespace OOP_Employee_and_Manager
             {
                 listBoxAllEmployees.Items.Add(emp.ToString());
             }
+            Console.WriteLine("|-----------Refreshed-----------|");
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
@@ -62,6 +66,7 @@ namespace OOP_Employee_and_Manager
                 var selected = allEmployees[listBoxAllEmployees.SelectedIndex];
 
                 FormEditEmployee editor = new FormEditEmployee(selected);
+                Console.WriteLine("|-----------FormEditEmployee requsted 4 update-----------|");
 
                 if (editor.ShowDialog() == DialogResult.OK)
                 {
@@ -70,6 +75,7 @@ namespace OOP_Employee_and_Manager
             }
             else
             {
+                Console.WriteLine("|-----------FormEditEmployee requsted 4 create-----------|");
                 var form = new FormEditEmployee();
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -85,6 +91,7 @@ namespace OOP_Employee_and_Manager
 
             allEmployees.RemoveAt(listBoxAllEmployees.SelectedIndex);
             RefreshAllEmployeesList();
+            Console.WriteLine("|-----------Entity deleted-----------|");
         }
 
         private List<Employee> filteredEmployees(int reqDaysLimit)
@@ -93,8 +100,9 @@ namespace OOP_Employee_and_Manager
 
             foreach (var _ in allEmployees)
             {
-                if (_.GetExperienceInDays() > reqDaysLimit)
+                if (_.GetExperienceInDays() >= reqDaysLimit)
                 {
+                    Console.WriteLine("|-----------Filter workin, adding entities-----------|");
                     temp.Add(_);
                 }
             }
@@ -103,6 +111,7 @@ namespace OOP_Employee_and_Manager
 
         private void requestFiltered_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("|-----------ListBoxFilteredByExperience requested");
             if (!int.TryParse(textReqExp.Text, out int reqDays))
             {
                 MessageBox.Show("Введите корректное кол-во дней для фильтра!", "Ошибка", MessageBoxButtons.OK,

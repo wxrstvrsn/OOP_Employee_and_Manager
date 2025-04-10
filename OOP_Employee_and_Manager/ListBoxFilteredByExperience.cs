@@ -15,13 +15,16 @@ namespace OOP_Employee_and_Manager
         public ListBoxFilteredByExperience(List<Employee> filteredEmployees)
         {
             InitializeComponent();
+            UpdateListBox(filteredEmployees);
         }
 
         private void UpdateListBox(List<Employee> filteredEmployees)
         {
-            foreach (var temp in filteredEmployees)
+            ListBoxFiltered.Items.Clear();
+
+            foreach (var emp in filteredEmployees)
             {
-                ListBoxFiltered.Items.Add(temp.ToString());
+                ListBoxFiltered.Items.Add(emp.ToString());
             }
         }
 
