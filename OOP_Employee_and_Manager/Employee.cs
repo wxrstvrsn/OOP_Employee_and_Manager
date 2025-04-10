@@ -13,8 +13,15 @@ namespace OOP_Employee_and_Manager
         private  float _salary;
         private DateTime _dateOfDirth;
         private DateTime _employDate;
-    
+
         //C-tors
+        public Employee(string name, float salary, DateTime dateOfDirth, DateTime employDate)
+        {
+            _name = name;
+            _salary = salary;
+            _dateOfDirth = dateOfDirth;
+            _employDate = employDate;
+        }
 
         /// <summary>
         /// Возвращает кол-во отработанных дней 
@@ -22,7 +29,7 @@ namespace OOP_Employee_and_Manager
         private int GetExperience()
         {
 
-            return 0;
+            return (DateTime.Now - _employDate).Days;
         }
         /// <summary>
         /// Увеличивает зарплату на процент из param.
@@ -32,6 +39,8 @@ namespace OOP_Employee_and_Manager
         {
             _salary += _salary * (percent / 100f);
         }
+
+
     }
 
 }
