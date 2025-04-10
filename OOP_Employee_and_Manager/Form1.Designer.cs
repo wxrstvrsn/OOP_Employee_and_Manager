@@ -29,15 +29,13 @@
         private void InitializeComponent()
         {
             createEmp = new Button();
-            listBoxEmployees = new ListBox();
+            listBoxAllEmployees = new ListBox();
             increaseSalary = new Button();
             textBoxPercent = new TextBox();
             label1 = new Label();
             labelManagers = new Label();
-            listBoxManagers = new ListBox();
             createManager = new Button();
             label2 = new Label();
-            listBoxHourlyManagers = new ListBox();
             createHourlyManager = new Button();
             buttonUpdate = new Button();
             SuspendLayout();
@@ -52,14 +50,14 @@
             createEmp.UseVisualStyleBackColor = true;
             createEmp.Click += createEmp_Click;
             // 
-            // listBoxEmployees
+            // listBoxAllEmployees
             // 
-            listBoxEmployees.FormattingEnabled = true;
-            listBoxEmployees.ItemHeight = 15;
-            listBoxEmployees.Location = new Point(52, 59);
-            listBoxEmployees.Name = "listBoxEmployees";
-            listBoxEmployees.Size = new Size(531, 229);
-            listBoxEmployees.TabIndex = 1;
+            listBoxAllEmployees.FormattingEnabled = true;
+            listBoxAllEmployees.ItemHeight = 15;
+            listBoxAllEmployees.Location = new Point(52, 59);
+            listBoxAllEmployees.Name = "listBoxAllEmployees";
+            listBoxAllEmployees.Size = new Size(531, 229);
+            listBoxAllEmployees.TabIndex = 1;
             // 
             // increaseSalary
             // 
@@ -98,15 +96,6 @@
             labelManagers.TabIndex = 6;
             labelManagers.Text = "Managers";
             // 
-            // listBoxManagers
-            // 
-            listBoxManagers.FormattingEnabled = true;
-            listBoxManagers.ItemHeight = 15;
-            listBoxManagers.Location = new Point(682, 59);
-            listBoxManagers.Name = "listBoxManagers";
-            listBoxManagers.Size = new Size(531, 229);
-            listBoxManagers.TabIndex = 5;
-            // 
             // createManager
             // 
             createManager.Location = new Point(1139, 294);
@@ -127,15 +116,6 @@
             label2.TabIndex = 9;
             label2.Text = "Hourly Managers";
             // 
-            // listBoxHourlyManagers
-            // 
-            listBoxHourlyManagers.FormattingEnabled = true;
-            listBoxHourlyManagers.ItemHeight = 15;
-            listBoxHourlyManagers.Location = new Point(29, 403);
-            listBoxHourlyManagers.Name = "listBoxHourlyManagers";
-            listBoxHourlyManagers.Size = new Size(531, 229);
-            listBoxHourlyManagers.TabIndex = 8;
-            // 
             // createHourlyManager
             // 
             createHourlyManager.Location = new Point(566, 576);
@@ -154,7 +134,7 @@
             buttonUpdate.TabIndex = 11;
             buttonUpdate.Text = "Update\r\nInformation";
             buttonUpdate.UseVisualStyleBackColor = true;
-            /*buttonUpdate.Click += buttonUpdate_Click;*/
+            buttonUpdate.Click += buttonUpdate_Click;
             // 
             // Form1
             // 
@@ -164,14 +144,12 @@
             Controls.Add(buttonUpdate);
             Controls.Add(createHourlyManager);
             Controls.Add(label2);
-            Controls.Add(listBoxHourlyManagers);
             Controls.Add(createManager);
             Controls.Add(labelManagers);
-            Controls.Add(listBoxManagers);
             Controls.Add(label1);
             Controls.Add(textBoxPercent);
             Controls.Add(increaseSalary);
-            Controls.Add(listBoxEmployees);
+            Controls.Add(listBoxAllEmployees);
             Controls.Add(createEmp);
             Name = "Form1";
             Text = "Form1";
@@ -182,15 +160,13 @@
         #endregion
 
         private Button createEmp;
-        private ListBox listBoxEmployees;
+        private ListBox listBoxAllEmployees;
         private Button increaseSalary;
         private TextBox textBoxPercent;
         private Label label1;
         private Label labelManagers;
-        private ListBox listBoxManagers;
         private Button createManager;
         private Label label2;
-        private ListBox listBoxHourlyManagers;
         private Button createHourlyManager;
         private Button buttonUpdate;
     }
