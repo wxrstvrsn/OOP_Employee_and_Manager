@@ -1,46 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace OOP_Employee_and_Manager
+public class Employee
 {
-    internal class Employee
+    private static int _counter = 1;
+
+    public string Name { get; set; }
+    public float Salary { get; set; }
+    public DateTime EmployDate { get; set; }
+    public DateTime DateOfBirth { get; set; }
+    protected string Id { get; set; }
+
+    public Employee(string fullName, float salary, DateTime hireDate)
     {
-        private string _name;
-        private  float _salary;
-        private DateTime _dateOfDirth;
-        private DateTime _employDate;
-
-        //C-tors
-        public Employee(string name, float salary, DateTime dateOfDirth, DateTime employDate)
-        {
-            _name = name;
-            _salary = salary;
-            _dateOfDirth = dateOfDirth;
-            _employDate = employDate;
-        }
-
-        /// <summary>
-        /// Возвращает кол-во отработанных дней 
-        /// </summary>
-        private int GetExperience()
-        {
-
-            return (DateTime.Now - _employDate).Days;
-        }
-        /// <summary>
-        /// Увеличивает зарплату на процент из param.
-        /// <param name="percent"> Процент увеличения 0 - 100 </param>
-        /// </summary>
-        private void IncreaseSalary(float percent)
-        {
-            _salary += _salary * (percent / 100f);
-        }
-
-
+        Name = fullName;
+        Salary = salary;
+        EmployDate = hireDate;
+        DateOfBirth = DateTime.MinValue; // можно установить позже
+        GenerateId();
     }
 
+    public Employee(string fullName, DateTime hireDate)
+        : this(fullName, 0, hireDate)
+    {
+    }
+
+    private void GenerateId()
+    {
+        var lastNameInitial = Name.Split(' ')[0][0];
+        Id = $"{char.ToUpper(lastNameInitial)}{_counter++:D3}";
+    }
+
+    public void IncreaseSalary(float percent)
+    {
+        Salary += Salary * (percent / 100f);
+    }
+
+    public int GetExperienceInDays()
+    {
+        return (DateTime.Now - EmployDate).Days;
+    }
+
+    public virtual float GetSalary()
+    {
+        return Salary;
+    }
+
+    public override string ToString()
+    {
+        return $"[{Id}] {Name}, Зарплата: {GetSalary():C}, Стаж: {GetExperienceInDays()} дн.";
+    }
 }
