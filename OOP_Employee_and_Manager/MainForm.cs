@@ -112,6 +112,7 @@ namespace OOP_Employee_and_Manager
 
             List<Employee> filtered = filteredEmployees(reqDays);
             var formFiltered = new ListBoxFilteredByExperience(filtered);
+            formFiltered.ShowDialog();
         }
     }
 }

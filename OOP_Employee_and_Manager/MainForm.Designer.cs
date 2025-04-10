@@ -104,6 +104,7 @@
             requestFiltered.TabIndex = 14;
             requestFiltered.Text = "request\r\nFiltered";
             requestFiltered.UseVisualStyleBackColor = true;
+            requestFiltered.Click += requestFiltered_Click;
             // 
             // textReqExp
             // 
