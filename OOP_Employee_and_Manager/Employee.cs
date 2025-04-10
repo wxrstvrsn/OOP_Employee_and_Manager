@@ -15,7 +15,7 @@ public class Employee
         Name = fullName;
         Salary = salary;
         EmployDate = hireDate;
-        DateOfBirth = DateTime.MinValue; // можно установить позже
+        DateOfBirth = DateTime.MinValue; 
         GenerateId();
     }
 
@@ -47,6 +47,6 @@ public class Employee
 
     public override string ToString()
     {
-        return $"[{Id}] {Name}, Зарплата: {GetSalary():C}, Стаж: {GetExperienceInDays()} дн.";
+        return $"Employee: [{Id}] {Name}, Зарплата: {GetSalary():C}, Стаж: {GetExperienceInDays()} дн.";
     }
 }

@@ -122,23 +122,20 @@ namespace OOP_Employee_and_Manager
 
         private void InitEditMode()
         {
-            comboBoxWorkerType.Visible = false; // Скрываем выбор типа — мы уже знаем тип
+            comboBoxWorkerType.Visible = false; 
 
             textBoxName.Text = editingTarget.Name;
             textBoxSalary.Text = editingTarget.Salary.ToString();
             dateTimePickerHire.Value = editingTarget.EmployDate;
-
-            // Отключаем все специфичные поля
+            
             EnableFieldsFor("Employee");
-
-            // Если это менеджер
+            
             if (editingTarget is Manager manager)
             {
                 EnableFieldsFor("Manager");
                 textBoxBonus.Text = manager.Bonus.ToString();
             }
-
-            // Если это почасовик
+            
             if (editingTarget is HourlyManager hourly)
             {
                 EnableFieldsFor("HourlyManager");

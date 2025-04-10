@@ -34,6 +34,9 @@
             label1 = new Label();
             buttonUpdate = new Button();
             buttonDelete = new Button();
+            requestFiltered = new Button();
+            textReqExp = new TextBox();
+            checkBoxIncrease4All = new CheckBox();
             SuspendLayout();
             // 
             // listBoxAllEmployees
@@ -93,11 +96,41 @@
             buttonDelete.UseVisualStyleBackColor = true;
             buttonDelete.Click += buttonDelete_Click;
             // 
+            // requestFiltered
+            // 
+            requestFiltered.Location = new Point(413, 468);
+            requestFiltered.Name = "requestFiltered";
+            requestFiltered.Size = new Size(93, 77);
+            requestFiltered.TabIndex = 14;
+            requestFiltered.Text = "request\r\nFiltered";
+            requestFiltered.UseVisualStyleBackColor = true;
+            // 
+            // textReqExp
+            // 
+            textReqExp.Location = new Point(512, 522);
+            textReqExp.Name = "textReqExp";
+            textReqExp.PlaceholderText = "textReqExp";
+            textReqExp.Size = new Size(100, 23);
+            textReqExp.TabIndex = 15;
+            // 
+            // checkBoxIncrease4All
+            // 
+            checkBoxIncrease4All.AutoSize = true;
+            checkBoxIncrease4All.Location = new Point(961, 329);
+            checkBoxIncrease4All.Name = "checkBoxIncrease4All";
+            checkBoxIncrease4All.Size = new Size(139, 19);
+            checkBoxIncrease4All.TabIndex = 16;
+            checkBoxIncrease4All.Text = "checkBoxIncrease4All";
+            checkBoxIncrease4All.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1271, 656);
+            Controls.Add(checkBoxIncrease4All);
+            Controls.Add(textReqExp);
+            Controls.Add(requestFiltered);
             Controls.Add(buttonDelete);
             Controls.Add(buttonUpdate);
             Controls.Add(label1);
@@ -105,7 +138,7 @@
             Controls.Add(increaseSalary);
             Controls.Add(listBoxAllEmployees);
             Name = "MainForm";
-            Text = "Form1";
+            Text = "MainForm";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -117,5 +150,8 @@
         private Label label1;
         private Button buttonUpdate;
         private Button buttonDelete;
+        private Button requestFiltered;
+        private TextBox textReqExp;
+        private CheckBox checkBoxIncrease4All;
     }
 }

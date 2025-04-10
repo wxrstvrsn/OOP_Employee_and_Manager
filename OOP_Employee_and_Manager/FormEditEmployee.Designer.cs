@@ -118,7 +118,7 @@
             Controls.Add(textBoxSalary);
             Controls.Add(textBoxName);
             Name = "FormEditEmployee";
-            Text = "Form2";
+            Text = "FormEditEmployee";
             ResumeLayout(false);
             PerformLayout();
         }
