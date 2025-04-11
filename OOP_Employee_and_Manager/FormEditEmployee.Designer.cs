@@ -40,68 +40,84 @@
             // 
             // textBoxName
             // 
+            textBoxName.BackColor = SystemColors.ScrollBar;
+            textBoxName.Font = new Font("Verdana", 14.25F);
             textBoxName.Location = new Point(632, 187);
             textBoxName.Name = "textBoxName";
             textBoxName.PlaceholderText = "Name";
-            textBoxName.Size = new Size(100, 23);
+            textBoxName.Size = new Size(100, 31);
             textBoxName.TabIndex = 0;
             // 
             // textBoxSalary
             // 
+            textBoxSalary.BackColor = SystemColors.ScrollBar;
+            textBoxSalary.Font = new Font("Verdana", 14.25F);
             textBoxSalary.Location = new Point(632, 216);
             textBoxSalary.Name = "textBoxSalary";
             textBoxSalary.PlaceholderText = "Salary";
-            textBoxSalary.Size = new Size(100, 23);
+            textBoxSalary.Size = new Size(100, 31);
             textBoxSalary.TabIndex = 1;
             // 
             // dateTimePickerHire
             // 
+            dateTimePickerHire.CalendarMonthBackground = SystemColors.ScrollBar;
+            dateTimePickerHire.Font = new Font("Verdana", 14.25F);
             dateTimePickerHire.Location = new Point(632, 245);
             dateTimePickerHire.Name = "dateTimePickerHire";
-            dateTimePickerHire.Size = new Size(200, 23);
+            dateTimePickerHire.Size = new Size(200, 31);
             dateTimePickerHire.TabIndex = 2;
             // 
             // textBoxBonus
             // 
+            textBoxBonus.BackColor = SystemColors.ScrollBar;
+            textBoxBonus.Font = new Font("Verdana", 14.25F);
             textBoxBonus.Location = new Point(632, 274);
             textBoxBonus.Name = "textBoxBonus";
             textBoxBonus.PlaceholderText = "Bonus";
-            textBoxBonus.Size = new Size(100, 23);
+            textBoxBonus.Size = new Size(100, 31);
             textBoxBonus.TabIndex = 3;
             // 
             // textBoxHours
             // 
+            textBoxHours.BackColor = SystemColors.ScrollBar;
+            textBoxHours.Font = new Font("Verdana", 14.25F);
             textBoxHours.Location = new Point(632, 303);
             textBoxHours.Name = "textBoxHours";
             textBoxHours.PlaceholderText = "Hours";
-            textBoxHours.Size = new Size(100, 23);
+            textBoxHours.Size = new Size(100, 31);
             textBoxHours.TabIndex = 4;
             // 
             // textBoxRate
             // 
+            textBoxRate.BackColor = SystemColors.ScrollBar;
+            textBoxRate.Font = new Font("Verdana", 14.25F);
             textBoxRate.Location = new Point(632, 332);
             textBoxRate.Name = "textBoxRate";
             textBoxRate.PlaceholderText = "Rate";
-            textBoxRate.Size = new Size(100, 23);
+            textBoxRate.Size = new Size(100, 31);
             textBoxRate.TabIndex = 5;
             // 
             // buttonSave
             // 
+            buttonSave.BackColor = SystemColors.ScrollBar;
+            buttonSave.Font = new Font("Verdana", 14.25F);
             buttonSave.Location = new Point(632, 394);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(160, 108);
             buttonSave.TabIndex = 6;
             buttonSave.Text = "Save\r\nChanges";
-            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.UseVisualStyleBackColor = false;
             buttonSave.Click += buttonSave_Click;
             // 
             // comboBoxWorkerType
             // 
+            comboBoxWorkerType.BackColor = SystemColors.ScrollBar;
+            comboBoxWorkerType.Font = new Font("Verdana", 14.25F);
             comboBoxWorkerType.FormattingEnabled = true;
             comboBoxWorkerType.Items.AddRange(new object[] { "Employee", "Manager", "HourlyManager" });
             comboBoxWorkerType.Location = new Point(632, 110);
             comboBoxWorkerType.Name = "comboBoxWorkerType";
-            comboBoxWorkerType.Size = new Size(121, 23);
+            comboBoxWorkerType.Size = new Size(121, 31);
             comboBoxWorkerType.TabIndex = 7;
             // 
             // FormEditEmployee

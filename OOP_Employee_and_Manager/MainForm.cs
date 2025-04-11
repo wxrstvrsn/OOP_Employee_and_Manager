@@ -1,3 +1,4 @@
+#define DEMO
 using System.Diagnostics;
 using OOP_Employee_and_Manager;
 
@@ -8,13 +9,15 @@ namespace OOP_Employee_and_Manager
         public MainForm()
         {
             InitializeComponent();
+        #if DEMO
+            SeedData();
+        #endif
         }
 
         private List<Employee> allEmployees = new List<Employee>();
 
         private void increaseSalary_Click(object sender, EventArgs e)
         {
-            
             if (!float.TryParse(textBoxPercent.Text, out float percent) || percent == 0)
             {
                 MessageBox.Show("Введите корректный процент!", "Ошибка", MessageBoxButtons.OK,
@@ -30,6 +33,7 @@ namespace OOP_Employee_and_Manager
                         MessageBoxIcon.Error);
                     return;
                 }
+
                 allEmployees[listBoxAllEmployees.SelectedIndex].IncreaseSalary(percent);
                 Console.WriteLine("|-----------Increased 4 selected-----------|");
             }
@@ -39,6 +43,7 @@ namespace OOP_Employee_and_Manager
                 {
                     temp.IncreaseSalary(percent);
                 }
+
                 Console.WriteLine("|-----------Increased 4 all-----------|");
             }
 
@@ -53,6 +58,7 @@ namespace OOP_Employee_and_Manager
             {
                 listBoxAllEmployees.Items.Add(emp.ToString());
             }
+
             Console.WriteLine("|-----------Refreshed-----------|");
         }
 
@@ -87,7 +93,12 @@ namespace OOP_Employee_and_Manager
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (listBoxAllEmployees.SelectedIndex == -1) return;
+            if (listBoxAllEmployees.SelectedIndex == -1)
+            {
+                MessageBox.Show("Выберите работника из списка", "Ошибка", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
 
             allEmployees.RemoveAt(listBoxAllEmployees.SelectedIndex);
             RefreshAllEmployeesList();
@@ -106,6 +117,7 @@ namespace OOP_Employee_and_Manager
                     temp.Add(_);
                 }
             }
+
             return temp;
         }
 
@@ -122,6 +134,57 @@ namespace OOP_Employee_and_Manager
             List<Employee> filtered = filteredEmployees(reqDays);
             var formFiltered = new ListBoxFilteredByExperience(filtered);
             formFiltered.ShowDialog();
+        }
+
+        private void SeedData()
+        {
+            var random = new Random();
+
+            string[] firstNames = { "Иван", "Пётр", "Алексей", "Дмитрий", "Максим", "Сергей", "Андрей", "Константин" };
+            string[] lastNames =
+                { "Иванов", "Петров", "Сидоров", "Кузнецов", "Мельников", "Смирнов", "Орлов", "Волков" };
+            string[] patronymics = { "Иванович", "Петрович", "Алексеевич", "Дмитриевич", "Максимович" };
+
+            // Генерация обычных сотрудников
+            for (int i = 0; i < 5; i++)
+            {
+                string fullName =
+                    $"{lastNames[random.Next(lastNames.Length)]} {firstNames[random.Next(firstNames.Length)]} {patronymics[random.Next(patronymics.Length)]}";
+                float salary = random.Next(35000, 50000);
+                DateTime hireDate = DateTime.Now.AddDays(-random.Next(300, 1500));
+
+                var emp = new Employee(fullName, salary, hireDate);
+                allEmployees.Add(emp);
+            }
+
+            // Генерация менеджеров
+            for (int i = 0; i < 3; i++)
+            {
+                string fullName =
+                    $"{lastNames[random.Next(lastNames.Length)]} {firstNames[random.Next(firstNames.Length)]} {patronymics[random.Next(patronymics.Length)]}";
+                float salary = random.Next(55000, 70000);
+                float bonus = random.Next(3000, 10000);
+                DateTime hireDate = DateTime.Now.AddDays(-random.Next(500, 2000));
+
+                var manager = new Manager(fullName, salary, hireDate, bonus);
+                allEmployees.Add(manager);
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                string fullName =
+                    $"{lastNames[random.Next(lastNames.Length)]} {firstNames[random.Next(firstNames.Length)]} {patronymics[random.Next(patronymics.Length)]}";
+                DateTime hireDate = DateTime.Now.AddDays(-random.Next(100, 600));
+                float rate = random.Next(500, 1000);
+                int hours = random.Next(10, 60);
+
+                var hourly = new HourlyManager(fullName, hireDate, rate);
+                hourly.AddHours(hours);
+
+                allEmployees.Add(hourly);
+            }
+
+            RefreshAllEmployeesList();
         }
     }
 }

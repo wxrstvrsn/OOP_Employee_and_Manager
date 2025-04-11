@@ -33,18 +33,20 @@
             // 
             // ListBoxFiltered
             // 
+            ListBoxFiltered.BackColor = SystemColors.ScrollBar;
+            ListBoxFiltered.Dock = DockStyle.Fill;
             ListBoxFiltered.FormattingEnabled = true;
             ListBoxFiltered.ItemHeight = 15;
-            ListBoxFiltered.Location = new Point(81, 70);
+            ListBoxFiltered.Location = new Point(0, 0);
             ListBoxFiltered.Name = "ListBoxFiltered";
-            ListBoxFiltered.Size = new Size(574, 259);
+            ListBoxFiltered.Size = new Size(1191, 611);
             ListBoxFiltered.TabIndex = 0;
             // 
             // ListBoxFilteredByExperience
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1191, 611);
             Controls.Add(ListBoxFiltered);
             Name = "ListBoxFilteredByExperience";
             Text = "ListBoxFilteredByExperience";
